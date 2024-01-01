@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: org-default-template
+# key: temp
+# --
+
+#+author: Prashant Tiwari
+#+Startup: latexpreview inlineimages
+#+latex_class: article
+#+latex_header: \\usepackage{amsmath, amssymb}
+#+latex_header: \\newtheorem{theorem}{Theorem}

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: import-latex-package
+# key: pac
+# --
+
+#+latex_header: \\usepackage{$1}$0

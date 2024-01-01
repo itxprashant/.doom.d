@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: preamble
+# key: pre
+# --
+#+latex_header: \\input{/home/prashantt492/org/org_preamble.tex}
