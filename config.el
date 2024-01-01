@@ -148,15 +148,15 @@
                  :image-converter)
       '("dvisvgm --page=1- --optimize --clipjoin --relative --no-fonts --bbox=preview -o %B-%%9p.svg %f"))
 
-;; neotree
-(after! neotree
-  (setq neo-smart-open t
-        neo-window-fixed-size nil))
-(after! doom-themes
-  (setq doom-neotree-enable-variable-pitch t))
-(map! :leader
-      :desc "Toggle neotree file viewer" "e" #'neotree-toggle
-      :desc "Open directory in neotree"  "d n" #'neotree-dir)
+;; neotree (moved to treemacs)
+;; (after! neotree
+;;   (setq neo-smart-open t
+;;         neo-window-fixed-size nil))
+;; (after! doom-themes
+;;   (setq doom-neotree-enable-variable-pitch t))
+;; (map! :leader
+;;       :desc "Toggle neotree file viewer" "e" #'neotree-toggle
+;;       :desc "Open directory in neotree"  "d n" #'neotree-dir)
 
 ;; latex preview options
 (setq org-startup-with-inline-images t)
