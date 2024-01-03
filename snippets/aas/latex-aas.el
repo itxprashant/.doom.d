@@ -91,8 +91,8 @@ insert a new subscript (e.g a -> a_1)."
           (or (<= ?a (char-before) ?z)
               (<= ?A (char-before) ?Z))
           ;; Before that is not
-          (not (or (<= ?a (char-before (1- (point))) ?z)
-                   (<= ?A (char-before (1- (point))) ?Z)))
+          ;; (not (or (<= ?a (char-before (1- (point))) ?z)     ;; Uncomment these two lines to disable auto-subscript
+          ;;          (<= ?A (char-before (1- (point))) ?Z)))   ;;  for more than two preceding characters.
           ;; Inside math
           (laas-mathp))
          'one-sub)))
@@ -422,12 +422,12 @@ ab/ => \\frac{ab}{}
   (or (derived-mode-p 'latex-mode)
       (laas-mathp)))
 
-(defun laas-accent--rm () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathrm" "textrm")))
-(defun laas-accent--it () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathit" "textit")))
-(defun laas-accent--bf () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathbf" "textbf")))
-(defun laas-accent--emph () (interactive) (laas-wrap-previous-object (if (laas-mathp) "mathem" "emph")))
-(defun laas-accent--tt () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathtt" "texttt")))
-(defun laas-accent--sf () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathsf" "textsf")))
+(defun laas-accent--rm   () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathrm" "textrm")))
+(defun laas-accent--it   () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathit" "textit")))
+(defun laas-accent--bf   () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathbf" "textbf")))
+(defun laas-accent--emph () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathem" "emph")))
+(defun laas-accent--tt   () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathtt" "texttt")))
+(defun laas-accent--sf   () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathsf" "textsf")))
 (defvar laas-accent-snippets
   `(;; work in both normal latex text and math
     :cond laas-latex-accent-cond

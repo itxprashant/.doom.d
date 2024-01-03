@@ -4,9 +4,6 @@
   :config
   (aas-set-snippets 'text-mode
     ;; expand unconditionally
-    ";tt" "test-successfull"
-
-    ";beg" '(yas "\\begin{$1}\n$2\n\\end{$1}\n$3")
 
     )
   (aas-set-snippets

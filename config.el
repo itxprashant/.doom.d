@@ -104,13 +104,14 @@
 ;; alignment of tables in org latex or image preview
 ;; (add-hook 'org-mode-hook #'valign-mode)
 ;; (add-hook 'org-mode-hook 'org-cdlatex-mode)
-(add-hook 'org-mode-hook 'org-latex-preview-auto-mode)
-(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 100))) 
+(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 110)))
 (add-hook 'org-mode-hook 'olivetti-mode)
 ;; (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 (load "~/.doom.d/snippets/aas/basic.el")
 (load "~/.doom.d/snippets/aas/latex-aas.el")
+(load "~/.doom.d/snippets/aas/chemistry-aas.el")
+(add-hook 'LaTeX-mode-hook 'laas-mode)
 (add-hook 'org-mode-hook 'laas-mode)
 
 
@@ -128,7 +129,6 @@
 (set-default 'preview-default-document-pt 12)
 (set-default 'preview-scale-function 1.5)
 
-
 ;; fix for svg in pdf latex export from org
 ;; (setq org-latex-pdf-process
 ;;       '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
@@ -143,10 +143,12 @@
 
 ;; (setq org-latex-preview-default-process 'dvipng)
 ;; (setq org-latex-preview-default-process 'imagemagick)
-(setq org-latex-preview-default-process 'dvisvgm)
-(setf (plist-get (alist-get 'dvisvgm org-latex-preview-process-alist)
-                 :image-converter)
-      '("dvisvgm --page=1- --optimize --clipjoin --relative --no-fonts --bbox=preview -o %B-%%9p.svg %f"))
+
+;; Fixed in the recent commit
+;; (setq org-latex-preview-default-process 'dvisvgm)
+;; (setf (plist-get (alist-get 'dvisvgm org-latex-preview-process-alist)
+;;                  :image-converter)
+;;       '("dvisvgm --page=1- --optimize --clipjoin --relative --no-fonts --bbox=preview -o %B-%%9p.svg %f"))
 
 ;; neotree (moved to treemacs)
 ;; (after! neotree
@@ -159,8 +161,11 @@
 ;;       :desc "Open directory in neotree"  "d n" #'neotree-dir)
 
 ;; latex preview options
-(setq org-startup-with-inline-images t)
-(setq org-startup-with-latex-preview t)
+(setq org-startup-with-inline-images t
+      org-startup-with-latex-preview t
+      +org-startup-with-animated-gifs t
+      tooltip-mode t
+      gud-tooltip-mode t)
 
 (use-package! org-latex-preview
   :after org
@@ -184,7 +189,7 @@
 ))
 
 (use-package yasnippet
-  :ensure t
+  ;; :ensure t
   :hook ((LaTeX-mode . yas-minor-mode)
          (post-self-insert . my/yas-try-expanding-auto-snippets))
   :config
@@ -222,8 +227,6 @@
 ;; Disable ws-butler, responsible for omitting leading whitespaces or empty newlines
 (remove-hook 'doom-first-buffer-hook #'ws-butler-global-mode)
 
-;; Disable dired omit mode to show hidden files
-;; (remove-hook 'dired-mode-hook #'dired-omit-mode)
 (setq ranger-show-hidden t)
 
 ;; Tree-sitter sources
@@ -245,3 +248,4 @@
      (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
+(setq laas-enable-auto-space nil)

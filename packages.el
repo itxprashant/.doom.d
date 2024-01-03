@@ -88,3 +88,4 @@
 (package! nerd-icons)
 (package! nerd-icons-completion)
 (package! unfill)
+(package! esup)
