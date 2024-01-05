@@ -228,50 +228,42 @@ it is restored only once."
 
 (defvar laas-basic-snippets
   '(:cond laas-mathp
-    "!="    "\\neq"
-    "!>"    "\\mapsto"
-    "**"    "\\cdot"
-    "+-"    "\\pm"
-    "-+"    "\\mp"
-    "->"    "\\to"
-    "..."   "\\dots"
-    "<<"    "\\ll"
-    "<="    "\\leq"
-    "<>"    "\\diamond"
-    "=<"    "\\impliedby"
-    "=="    "&="
-    "=>"    "\\implies"
-    ">="    "\\geq"
-    ">>"    "\\gg"
-    "AA"    "\\forall"
-    "EE"    "\\exists"
-    "cb"    "^3"
-    "iff"   "\\iff"
-    "inn"   "\\in"
-    "notin" "\\not\\in"
+    "!="    "\\neq "
+    "!>"    "\\mapsto "
+    "**"    "\\cdot "
+    "+-"    "\\pm "
+    "-+"    "\\mp "
+    "too"    "\\to "
+    "..."   "\\ldots "
+    "<<"    "\\ll "
+    "<="    "\\leq "
+    "<>"    "\\diamond "
+    "=<"    "\\impliedby "
+    "=="    "&= "
+    "=>"    "\\implies "
+    ">="    "\\geq "
+    ">>"    "\\gg "
+    "AA"    "\\forall "
+    "EE"    "\\exists "
+    "cb"    "^3 "
+    "iff"   "\\iff "
+    "inn"   "\\in "
+    "notin" "\\not\\in "
     "sr"    "^2"
     "sq"    (lambda () (interactive) (yas-expand-snippet "\\sqrt{$1} $0"))
-    "xx"    "\\times"
-    "stt"    (lambda () (interactive) (yas-expand-snippet "_{\\text{$1}} $0"))
+    "xx"    "\\times "
+    "stt"    (lambda () (interactive) (yas-expand-snippet "_{\\text{$1}}$0"))
     "tt"    (lambda () (interactive) (yas-expand-snippet "\\text{$1} $0"))
-    "|->"   "\\mapsto"
-    "|="    "\\models"
-    "||"    "\\mid"
-    "~="    "\\approx"
-    "~~"    "\\sim"
-    ;; "...\\)a" 	"...\\) a"
-    ;; "//" 	"\\frac{}{}"
-    ;; "a" "+b 	a + b"
-    ;; "a" "^ 	a^"
-    ;; "a+" 	"a +"
-    ;; "a^11" 	"a^{11}"
-    ;; "case" 	"cases env."
-    ;; "part" 	"\\frac{\\partial }{\\partial }"
-    ;; "pmat" 	"pmatrix"
-    ;; "set" 	"\\{ \\}"
-    ;; "sq" 	"\\sqrt{}"
-    ;; "st" 	"\\text{s.t.}"
-    ;;"\\\\\\"\\" 	"\\setminus"
+    "td"    (lambda () (interactive) (yas-expand-snippet "^{$1}$0"))
+    "rd"    (lambda () (interactive) (yas-expand-snippet "_{$1}$0"))
+    "rlr"    (lambda () (interactive) (yas-expand-snippet "\\left( $1 \\right)$0"))
+    "slr"    (lambda () (interactive) (yas-expand-snippet "\\left[ $1 \\right]$0"))
+    "|->"   "\\mapsto "
+    "|="    "\\models "
+    "||"    "\\mid "
+    "~="    "\\sim "
+    "~~"    "\\approx "
+    "deg"   "^{\\circ}"
 
     "arccos" "\\arccos"
     "arccot" "\\arccot"
@@ -287,22 +279,23 @@ it is restored only once."
     "ln"     "\\ln"
     "log"    "\\log"
     "perp"   "\\perp"
+    "sec"    "\\sec"
     "sin"    "\\sin"
     "tan"    "\\tan"
-    "star"   "\\star"
-    "gcd"    "\\gcd"
-    "min"    "\\min"
-    "max"    "\\max"
-    "eqv"    "\\equiv" ; == is taken and =- too common
+    "star"   "\\star "
+    "gcd"    "\\gcd "
+    "min"    "\\min "
+    "max"    "\\max "
+    "eqv"    "\\equiv " ; == is taken and =- too common
 
-    "CC" "\\CC"
-    "FF" "\\FF"
-    "HH" "\\HH"
-    "NN" "\\NN"
-    "PP" "\\PP"
-    "QQ" "\\QQ"
-    "RR" "\\RR"
-    "ZZ" "\\ZZ"
+    "CC" "\\mathbb{C}"
+    "FF" "\\mathbb{F}"
+    "HH" "\\mathbb{H}"
+    "NN" "\\mathbb{N}"
+    "PP" "\\mathbb{P}"
+    "QQ" "\\mathbb{Q}"
+    "RR" "\\mathbb{R}"
+    "ZZ" "\\mathbb{Z}"
     
     ";a"  "\\alpha"
     ";A"  "\\forall"        ";;A" "\\aleph"
@@ -318,8 +311,8 @@ it is restored only once."
     ";g"  "\\gamma"                                ";;;g" "\\lg"
     ";G"  "\\Gamma"                                ";;;G" "10^{?}"
     ";h"  "\\eta"           ";;h" "\\hbar"
-    ";i"  "\\in"            ";;i" "\\imath"
-    ";I"  "\\iota"          ";;I" "\\Im"
+    ";i"  "\\iota"            ";;i" "\\imath"
+    ";I"  "\\Iota"          ";;I" "\\Im"
     ";;j" "\\jmath"
     ";k"  "\\kappa"
     ";l"  "\\lambda"        ";;l" "\\ell"          ";;;l" "\\log"
@@ -448,7 +441,7 @@ ab/ => \\frac{ab}{}
                     ("':" . "ddot")
                     ("'~" . "tilde")
                     ("'N" . "widetilde")
-                    ("'^" . "hat")
+                    ("'h" . "hat")
                     ("'H" . "widehat")
                     ("'-" . "bar")
                     ("'T" . "overline")
@@ -543,3 +536,4 @@ ab/ => \\frac{ab}{}
 
 (provide 'laas)
 ;;; laas.el ends here
+(setq laas-enable-auto-space nil)

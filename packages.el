@@ -89,3 +89,4 @@
 (package! nerd-icons-completion)
 (package! unfill)
 (package! esup)
+(package! benchmark-init)

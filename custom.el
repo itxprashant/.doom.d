@@ -8,7 +8,7 @@
  '(org-safe-remote-resources
    '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-readtheorg\\.setup\\'"))
  '(package-selected-packages '(yasnippet))
- '(warning-suppress-log-types '(((org-element org-element-parser)))))
+ '(warning-suppress-log-types '(((org-element org-element-parser buffer-local-value)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

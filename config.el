@@ -34,8 +34,6 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'modus-operandi)
 (setq doom-theme 'doom-dracula)
-(setq doom-acario-light-brighter-comments t)
-(setq doom-acario-light-brighter-modeline t)
 (setq fancy-splash-image "~/.doom.d/banner.png")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -96,6 +94,7 @@
   (evil-force-normal-state))
 (global-set-key "\M-e" 'my-open-current-file-in-nvim)
 
+
 ;; Inkscape figures
 (load "~/.doom.d/scripts/ink.el")
 
@@ -104,9 +103,15 @@
 ;; alignment of tables in org latex or image preview
 ;; (add-hook 'org-mode-hook #'valign-mode)
 ;; (add-hook 'org-mode-hook 'org-cdlatex-mode)
+
+
 (add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 110)))
+(add-hook 'olivetti-mode-on-hook (lambda () (visual-line-mode 1)))
 (add-hook 'org-mode-hook 'olivetti-mode)
 ;; (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
+
+(global-visual-line-mode 1)
+
 
 (load "~/.doom.d/snippets/aas/basic.el")
 (load "~/.doom.d/snippets/aas/latex-aas.el")
@@ -116,9 +121,9 @@
 
 
 ;; fonts and theming
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 15)
-      doom-variable-pitch-font (font-spec :family "JetBrainsMono Nerd Font" :size 15)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 24))
+(setq doom-font (font-spec :family "Hack Nerd Font" :size 15)
+      doom-variable-pitch-font (font-spec :family "Hack Nerd Font" :size 15)
+      doom-big-font (font-spec :family "Hack Nerd Font" :size 24))
 (after! doom-themes
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t))
@@ -129,12 +134,6 @@
 (set-default 'preview-default-document-pt 12)
 (set-default 'preview-scale-function 1.5)
 
-;; fix for svg in pdf latex export from org
-;; (setq org-latex-pdf-process
-;;       '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-;;     "bibtex %b"
-;;     "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
-;;     "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
 
 (add-hook 'python-mode-hook 'anaconda-mode)
@@ -164,8 +163,7 @@
 (setq org-startup-with-inline-images t
       org-startup-with-latex-preview t
       +org-startup-with-animated-gifs t
-      tooltip-mode t
-      gud-tooltip-mode t)
+      tooltip-mode t)
 
 (use-package! org-latex-preview
   :after org
@@ -188,7 +186,7 @@
         \\usepackage[dvipsnames,svgnames]{xcolor}"
 ))
 
-(use-package yasnippet
+(use-package! yasnippet
   ;; :ensure t
   :hook ((LaTeX-mode . yas-minor-mode)
          (post-self-insert . my/yas-try-expanding-auto-snippets))
@@ -248,4 +246,9 @@
      (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
      (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
-(setq laas-enable-auto-space nil)
+(when init-file-debug
+  (require 'benchmark-init)
+  (add-hook 'doom-first-input-hook #'benchmark-init/deactivate))
+
+(setq treemacs-expand-added-projects nil
+      treemacs-expand-after-init nil)

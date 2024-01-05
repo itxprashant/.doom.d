@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: differentiation
+# key: dif
+# condition: (texmathp)
+# group: math
+# --
+\\frac{\\mathrm{d} $1}{\\mathrm{d} ${2:x}} $0
