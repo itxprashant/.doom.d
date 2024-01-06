@@ -80,6 +80,7 @@
 (package! org-modern)
 (package! org-download)
 (package! org-anki)
+(package! org-appear) ;; Auto toggle emphasis markers
 (package! olivetti)
 
 (package! aas)

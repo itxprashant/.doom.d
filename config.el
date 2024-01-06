@@ -158,12 +158,15 @@
 ;; (map! :leader
 ;;       :desc "Toggle neotree file viewer" "e" #'neotree-toggle
 ;;       :desc "Open directory in neotree"  "d n" #'neotree-dir)
+(map! :leader
+      :desc "Toggle org latex preview auto mode" "t o" 'org-latex-preview-auto-mode
+      :desc "Toggle lsp mode" "t L" 'lsp-mode)
 
 ;; latex preview options
 (setq org-startup-with-inline-images t
       org-startup-with-latex-preview t
-      +org-startup-with-animated-gifs t
-      tooltip-mode t)
+      +org-startup-with-animated-gifs t)
+(add-hook 'org-mode-hook 'tooltip-mode)
 
 (use-package! org-latex-preview
   :after org
@@ -252,3 +255,22 @@
 
 (setq treemacs-expand-added-projects nil
       treemacs-expand-after-init nil)
+
+;; Org-appear
+(add-hook 'org-mode-hook 'org-appear-mode)
+(setq org-hide-emphasis-markers t)
+(setq org-appear-inside-latex nil
+      org-appear-autoemphasis t
+      org-appear-autolinks t
+      org-appear-autosubmarkers t)
+
+(setq org-highlight-latex-and-related '(latex script entities))
+
+(defun open-latex-without-lsp (file)
+  "A function to open certain latex files
+         without lsp to reduce load time"
+  (interactive)
+  (remove-hook! 'tex-mode-local-vars-hook 'lsp!)
+  (remove-hook! 'latex-mode-local-vars-hook 'lsp!)
+  (find-file file))
+
