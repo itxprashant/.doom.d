@@ -91,3 +91,4 @@
 (package! unfill)
 (package! esup)
 (package! benchmark-init)
+(package! gptel)

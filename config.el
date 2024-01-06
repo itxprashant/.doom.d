@@ -274,3 +274,5 @@
   (remove-hook! 'latex-mode-local-vars-hook 'lsp!)
   (find-file file))
 
+;; GPTEL
+(load-file "~/Documents/credentials/gptel-gemini-key.el")
