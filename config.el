@@ -94,12 +94,17 @@
   (evil-force-normal-state))
 (global-set-key "\M-e" 'my-open-current-file-in-nvim)
 
+(require 'org)
 
 ;; Inkscape figures
 (load "~/.doom.d/scripts/ink.el")
 
+(use-package! org)
 ;; org-download
+
 (require 'org-download)
+(setq org-download-image-dir "./img/")
+
 ;; alignment of tables in org latex or image preview
 ;; (add-hook 'org-mode-hook #'valign-mode)
 ;; (add-hook 'org-mode-hook 'org-cdlatex-mode)
@@ -158,9 +163,18 @@
 ;; (map! :leader
 ;;       :desc "Toggle neotree file viewer" "e" #'neotree-toggle
 ;;       :desc "Open directory in neotree"  "d n" #'neotree-dir)
+
+(add-hook! 'org-mode-hook 'evil-tex-mode)
+
+
+(defun save-and-revert-buffer ()
+  "Saves and reverts the buffer"
+  (interactive)
+  (save-buffer)
+  (revert-buffer))
+
 (map! :leader
-      :desc "Toggle org latex preview auto mode" "t o" 'org-latex-preview-auto-mode
-      :desc "Toggle lsp mode" "t L" 'lsp-mode)
+     :desc "Save and revert buffer" "b j" 'save-and-revert-buffer)
 
 ;; latex preview options
 (setq org-startup-with-inline-images t
@@ -188,6 +202,20 @@
         "\\documentclass{article}\n[DEFAULT-PACKAGES]\n[PACKAGES]
         \\usepackage[dvipsnames,svgnames]{xcolor}"
 ))
+
+
+(defun regenerate-org-latex-cache ()
+  "This command regenerates org latex previews"
+  (interactive)
+  (setq org-startup-with-latex-preview t)
+  (save-buffer) 
+  (save-excursion (goto-char (point-min))
+                  (org-latex-preview-clear-cache)
+                  (revert-buffer)))
+(map! :leader
+      :desc "Toggle org latex preview auto mode" "t o" 'org-latex-preview-auto-mode
+      :desc "Toggle lsp mode" "t L" 'lsp-mode
+      :desc "Regenerate latex cache" "r l" 'regenerate-org-latex-cache)
 
 (use-package! yasnippet
   ;; :ensure t
@@ -262,7 +290,9 @@
 (setq org-appear-inside-latex nil
       org-appear-autoemphasis t
       org-appear-autolinks t
-      org-appear-autosubmarkers t)
+      org-appear-autosubmarkers t
+      org-appear-autoentities t
+      org-appear-autokeywords t)
 
 (setq org-highlight-latex-and-related '(latex script entities))
 
@@ -276,3 +306,8 @@
 
 ;; GPTEL
 (load-file "~/Documents/credentials/gptel-gemini-key.el")
+
+
+;; Smartparens-yas fix
+(add-hook 'yas-before-expand-snippet-hook (lambda () (smartparens-mode -1)))
+(add-hook 'yas-after-exit-snippet-hook (lambda () (smartparens-mode 1)))

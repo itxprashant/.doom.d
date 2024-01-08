@@ -89,10 +89,12 @@ insert a new subscript (e.g a -> a_1)."
         ((and
           ;; Before is some indexable char
           (or (<= ?a (char-before) ?z)
-              (<= ?A (char-before) ?Z))
+              (<= ?A (char-before) ?Z)
+              (equal (char-before) ?})) ;; For stuffs like \vec{..}_2
           ;; Before that is not
           ;; (not (or (<= ?a (char-before (1- (point))) ?z)     ;; Uncomment these two lines to disable auto-subscript
           ;;          (<= ?A (char-before (1- (point))) ?Z)))   ;;  for more than two preceding characters.
+                   
           ;; Inside math
           (laas-mathp))
          'one-sub)))
