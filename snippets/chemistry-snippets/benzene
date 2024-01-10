@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: benzene
+# key: benz
+# condition: (texmathp)
+# group: chemistry
+# --
+*6(- = - = $1 - =)$0

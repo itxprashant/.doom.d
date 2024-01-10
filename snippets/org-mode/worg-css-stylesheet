@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: worg-css-stylesheet
+# key: worg
+# --
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://itxprashant.github.io/org-html-themes/src/worg/worg.css"/>
