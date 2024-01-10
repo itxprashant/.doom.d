@@ -103,16 +103,26 @@
 ;; org-download
 
 (require 'org-download)
-(setq org-download-image-dir "./img/")
+(defun my-org-download-method (link)
+  (let ((filename
+         (file-name-nondirectory
+          (car (url-path-and-query
+                (url-generic-parse-url link)))))
+        (dirname (concat "img/" (file-name-sans-extension (buffer-name)))))
+    (make-directory dirname :parents)
+    (expand-file-name (concat (format-time-string "%Y%m%d%H%M%S-") filename) dirname)))
+(setq org-download-method 'my-org-download-method)
+;; (setq-default org-download-image-dir "./img/")
 
 ;; alignment of tables in org latex or image preview
 ;; (add-hook 'org-mode-hook #'valign-mode)
 ;; (add-hook 'org-mode-hook 'org-cdlatex-mode)
 
 
-(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 110)))
+(add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 66)))
 (add-hook 'olivetti-mode-on-hook (lambda () (visual-line-mode 1)))
 (add-hook 'org-mode-hook 'olivetti-mode)
+(setq org-image-align 'center)
 ;; (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 (global-visual-line-mode 1)
@@ -139,6 +149,15 @@
 (set-default 'preview-default-document-pt 12)
 (set-default 'preview-scale-function 1.5)
 
+;; Use variable width font faces in current buffer
+ (defun my-buffer-face-mode-variable ()
+   "Set font to a variable width (proportional) fonts in current buffer"
+   (interactive)
+   (setq buffer-face-mode-face '(:family "DejaVu Serif" :height 130))
+   (buffer-face-mode))
+
+(add-hook! 'org-mode-hook 'my-buffer-face-mode-variable)
+
 
 
 (add-hook 'python-mode-hook 'anaconda-mode)
@@ -164,6 +183,9 @@
 ;;       :desc "Toggle neotree file viewer" "e" #'neotree-toggle
 ;;       :desc "Open directory in neotree"  "d n" #'neotree-dir)
 
+(add-hook! 'treemacs-mode-hook 'treemacs-follow-mode)
+(setq treemacs-width 40)
+
 (add-hook! 'org-mode-hook 'evil-tex-mode)
 
 
@@ -175,6 +197,23 @@
 
 (map! :leader
      :desc "Save and revert buffer" "b j" 'save-and-revert-buffer)
+(map! :leader
+      :desc "Browse other project" ">" 'doom/browse-in-other-project)
+
+(defun org-latex-preview/dvipng ()
+    "Sets dvipng as default latex process"
+        (interactive)
+        (setq org-latex-preview-process-default 'dvipng))
+
+(defun org-latex-preview/dvisvgm ()
+    "Sets dvipng as default latex process"
+        (interactive)
+        (setq org-latex-preview-process-default 'dvisvgm))
+
+(defun org-latex-preview/imagemagick ()
+    "Sets dvipng as default latex process"
+        (interactive)
+        (setq org-latex-preview-process-default 'imagemagick))
 
 ;; latex preview options
 (setq org-startup-with-inline-images t
@@ -203,19 +242,13 @@
         \\usepackage[dvipsnames,svgnames]{xcolor}"
 ))
 
+(load "~/.doom.d/scripts/org-latex-preview.el")
 
-(defun regenerate-org-latex-cache ()
-  "This command regenerates org latex previews"
-  (interactive)
-  (setq org-startup-with-latex-preview t)
-  (save-buffer) 
-  (save-excursion (goto-char (point-min))
-                  (org-latex-preview-clear-cache)
-                  (revert-buffer)))
 (map! :leader
       :desc "Toggle org latex preview auto mode" "t o" 'org-latex-preview-auto-mode
       :desc "Toggle lsp mode" "t L" 'lsp-mode
-      :desc "Regenerate latex cache" "r l" 'regenerate-org-latex-cache)
+      :desc "Regenerate latex cache and preamble" "r L" 'regenerate-org-latex-cache-and-preamble
+      :desc "Regenerate latex cache" "r l" 'regenerate-org-latex-cache-only)
 
 (use-package! yasnippet
   ;; :ensure t
@@ -296,18 +329,23 @@
 
 (setq org-highlight-latex-and-related '(latex script entities))
 
-(defun open-latex-without-lsp (file)
-  "A function to open certain latex files
-         without lsp to reduce load time"
-  (interactive)
-  (remove-hook! 'tex-mode-local-vars-hook 'lsp!)
-  (remove-hook! 'latex-mode-local-vars-hook 'lsp!)
-  (find-file file))
-
 ;; GPTEL
 (load-file "~/Documents/credentials/gptel-gemini-key.el")
 
 
 ;; Smartparens-yas fix
-(add-hook 'yas-before-expand-snippet-hook (lambda () (smartparens-mode -1)))
-(add-hook 'yas-after-exit-snippet-hook (lambda () (smartparens-mode 1)))
+;; (add-hook 'yas-before-expand-snippet-hook (lambda () (smartparens-mode -1)))
+;; (add-hook 'yas-after-exit-snippet-hook (lambda () (smartparens-mode 1)))
+
+(defun initialize-modes-with-daemon ()
+  "Initializes major/minor modes with daemon to reduce load time"
+  (org-mode)
+  (emacs-lisp-mode))
+
+(add-hook 'after-init-hook 'initialize-modes-with-daemon)
+;; Initialize org with daemon
+;; (add-hook 'after-init-hook 'org-mode)
+;; (add-hook 'after-init-hook #'+workspace/kill-session)
+
+;; Revert scratch buffer to elisp mode
+;; (add-hook 'after-init-hook 'emacs-lisp-mode)

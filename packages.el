@@ -85,6 +85,7 @@
 
 (package! aas)
 (package! ef-themes)
+(package! modus-themes)
 
 (package! nerd-icons)
 (package! nerd-icons-completion)
@@ -92,3 +93,4 @@
 (package! esup)
 (package! benchmark-init)
 (package! gptel)
+(package! rainbow-mode)

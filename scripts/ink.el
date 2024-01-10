@@ -186,6 +186,8 @@ too.")
          (flags (mapconcat 'identity mflags " ")))
     (dolist (file files-all (ink-post-process tdir))
       (shell-command (funcall ink-process-cmnd file flags))
+      (shell-command (format "sed -i 's/#000000/currentColor/g' %s" file)) ;; To make the svg adapt to themes
+      (shell-command (format "sed -i 's/black/currentColor/g' %s" file))
       (ink-insert-tex file))))
 
 (defun ink-sentinel (process _event)

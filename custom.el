@@ -5,8 +5,10 @@
  ;; If there is more than one, they won't work right.
  '(elfeed-feeds '("https://protesilaos.com/master.xml"))
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
+ '(org-agenda-files
+   '("~/workspace/academic/mains_extra/physics/meter_bridge_theory.org" "/home/prashantt492/temp/org-latex-preview-benchmark/test-org/test-0660.org"))
  '(org-safe-remote-resources
-   '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-readtheorg\\.setup\\'"))
+   '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-bigblow\\.setup\\'" "\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-readtheorg\\.setup\\'"))
  '(package-selected-packages '(yasnippet))
  '(warning-suppress-log-types '(((org-element org-element-parser buffer-local-value)))))
 (custom-set-faces
