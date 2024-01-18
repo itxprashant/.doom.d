@@ -98,6 +98,10 @@
 
 ;; Inkscape figures
 (load "~/.doom.d/scripts/ink.el")
+(map! :leader
+      :desc "ink-create-figure" "i i" 'ink-make-figure
+      :mode 'org-mode :desc "org-download-clipboard" "i c" 'org-download-clipboard)
+
 
 (use-package! org)
 ;; org-download
