@@ -200,6 +200,8 @@
 (map! :leader
       :desc "Browse other project" ">" 'doom/browse-in-other-project)
 
+(map! :mode 'ranger-mode :desc "New file" "; n" 'dired-create-empty-file)
+
 (defun org-latex-preview/dvipng ()
     "Sets dvipng as default latex process"
         (interactive)
