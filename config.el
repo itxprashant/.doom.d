@@ -329,6 +329,8 @@
 
 (setq org-highlight-latex-and-related '(latex script entities))
 
+(setq org-export-preserve-breaks t)
+
 ;; GPTEL
 (load-file "~/Documents/credentials/gptel-gemini-key.el")
 
