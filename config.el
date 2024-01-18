@@ -188,6 +188,7 @@
 
 (add-hook! 'org-mode-hook 'evil-tex-mode)
 
+(vertico-reverse-mode 1)
 
 (defun save-and-revert-buffer ()
   "Saves and reverts the buffer"
