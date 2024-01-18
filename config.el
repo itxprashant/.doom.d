@@ -339,15 +339,11 @@
 ;; (add-hook 'yas-before-expand-snippet-hook (lambda () (smartparens-mode -1)))
 ;; (add-hook 'yas-after-exit-snippet-hook (lambda () (smartparens-mode 1)))
 
-(defun initialize-modes-with-daemon ()
-  "Initializes major/minor modes with daemon to reduce load time"
-  (org-mode)
-  (emacs-lisp-mode))
+(defun initialize-org-mode-with-daemon ()
+  "Initializes org mode with daemon to reduce load time"
+  (with-temp-buffer (org-mode)))
 
-(add-hook 'after-init-hook 'initialize-modes-with-daemon)
-;; Initialize org with daemon
-;; (add-hook 'after-init-hook 'org-mode)
-;; (add-hook 'after-init-hook #'+workspace/kill-session)
+(add-hook 'after-init-hook #'initialize-org-mode-with-daemon)
 
 ;; Revert scratch buffer to elisp mode
 ;; (add-hook 'after-init-hook 'emacs-lisp-mode)
