@@ -284,7 +284,10 @@
 ;; Need to get this working
 ;; Use context aware backends before :with 
 (set-company-backend! 'org-mode
-  '(company-files company-capf :with company-yasnippet))
+  '(:separate company-files company-capf company-yasnippet :with company-dabbrev))
+
+(setq company-files-chop-trailing-slash t)
+
 
 ;; Disable ws-butler, responsible for omitting leading whitespaces or empty newlines
 (remove-hook 'doom-first-buffer-hook #'ws-butler-global-mode)
