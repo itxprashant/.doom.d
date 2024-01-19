@@ -355,5 +355,4 @@
 
 (add-hook 'after-init-hook #'initialize-org-mode-with-daemon)
 
-;; Revert scratch buffer to elisp mode
-;; (add-hook 'after-init-hook 'emacs-lisp-mode)
+(setq rmh-elfeed-org-files (list "~/.doom.d/elfeed.org"))
