@@ -343,6 +343,9 @@
 
 ;; GPTEL
 (load-file "~/Documents/credentials/gptel-gemini-key.el")
+(map! :leader
+      :desc "GPTEL send" "g p s" 'gptel-send
+      :desc "GPTEL menu" "g p m" 'gptel-menu)
 
 
 ;; Smartparens-yas fix
