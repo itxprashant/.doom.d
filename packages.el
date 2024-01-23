@@ -85,7 +85,7 @@
 
 (package! aas)
 (package! ef-themes)
-(package! modus-themes)
+;; (package! modus-themes)
 
 (package! nerd-icons)
 (package! nerd-icons-completion)
