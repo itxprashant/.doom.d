@@ -126,7 +126,7 @@
 (add-hook 'olivetti-mode-on-hook (lambda () (olivetti-set-width 66)))
 (add-hook 'olivetti-mode-on-hook (lambda () (visual-line-mode 1)))
 (add-hook 'org-mode-hook 'olivetti-mode)
-(setq org-image-align 'center)
+;; (setq org-image-align 'center)
 ;; (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode -1)))
 
 (global-visual-line-mode 1)
