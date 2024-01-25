@@ -358,3 +358,5 @@
 (add-hook 'after-init-hook #'initialize-org-mode-with-daemon)
 
 (setq rmh-elfeed-org-files (list "~/.doom.d/elfeed.org"))
+
+(setq org-latex-pdf-process '("latexmk -f -pdf -%latex -shell-escape -interaction=nonstopmode -output-directory=%o %f"))
