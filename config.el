@@ -285,13 +285,11 @@
         company-minimum-prefix-length 2)
   (setq company-dabbrev-downcase 0)
   (setq company-show-quick-access nil)
-  (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less annoying.
+  (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less
 
-
-;; Need to get this working
-;; Use context aware backends before :with 
+;; company-dabbrev is rather distracting
 (set-company-backend! 'org-mode
-  '(:separate company-files company-capf company-yasnippet :with company-dabbrev))
+  '(:separate company-files company-capf company-yasnippet))
 
 (setq company-files-chop-trailing-slash t)
 
