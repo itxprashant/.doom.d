@@ -33,7 +33,7 @@
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'modus-operandi)
-(setq doom-theme 'doom-dracula)
+(setq doom-theme 'ef-maris-dark)
 (setq fancy-splash-image "~/.doom.d/banner.png")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
