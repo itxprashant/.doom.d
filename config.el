@@ -191,6 +191,7 @@
 (setq treemacs-width 40)
 
 (add-hook! 'org-mode-hook 'evil-tex-mode)
+(setq org-html-htmlize-output-type 'css)
 
 (vertico-reverse-mode 1)
 
