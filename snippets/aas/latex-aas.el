@@ -265,6 +265,7 @@ it is restored only once."
     "||"    "\\mid "
     "~="    "\\sim "
     "~~"    "\\approx "
+    "prop"  "\\propto "
     "deg"   "^{\\circ}"
 
     "arccos" "\\arccos"
