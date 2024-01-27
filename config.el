@@ -35,6 +35,7 @@
 ;; (setq doom-theme 'modus-operandi)
 (setq doom-theme 'ef-maris-dark)
 (setq fancy-splash-image "~/.doom.d/banner.png")
+(setq-default cursor-type 'bar)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
