@@ -83,16 +83,16 @@
 
 ;; Open nvim instance while writing
 ;; kclip is a workaround for an unknown jammer triggering on kill ring
-(defun my-open-current-file-in-nvim ()
-  (interactive)
-  (save-buffer)
-  (shell-command "~/.local/bin/kclip")
-  (shell-command
-  (format "urxvt -geometry 100x25 -e nvim +%d %s '+startinsert!'"
-       (+ (if (bolp) 1 0) (count-lines 1 (point)))
-       (shell-quote-argument buffer-file-name)))
-  (evil-force-normal-state))
-(global-set-key "\M-e" 'my-open-current-file-in-nvim)
+;; (defun my-open-current-file-in-nvim ()
+;;   (interactive)
+;;   (save-buffer)
+;;   (shell-command "~/.local/bin/kclip")
+;;   (shell-command
+;;   (format "urxvt -geometry 100x25 -e nvim +%d %s '+startinsert!'"
+;;        (+ (if (bolp) 1 0) (count-lines 1 (point)))
+;;        (shell-quote-argument buffer-file-name)))
+;;   (evil-force-normal-state))
+;; (global-set-key "\M-e" 'my-open-current-file-in-nvim)
 
 (require 'org)
 

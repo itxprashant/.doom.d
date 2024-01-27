@@ -16,3 +16,4 @@
  '(font-lock-comment-face ((t (:slant italic))))
  '(font-lock-keyword-face ((t (:slant italic))))
  '(widget-button ((t (:foreground nil)))))
+(put 'magit-edit-line-commit 'disabled nil)
