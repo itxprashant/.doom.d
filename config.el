@@ -191,7 +191,7 @@
 (add-hook! 'treemacs-mode-hook 'treemacs-follow-mode)
 (setq treemacs-width 40)
 
-(add-hook! 'org-mode-hook 'evil-tex-mode)
+;;(add-hook! 'org-mode-hook 'evil-tex-mode)
 (setq org-html-htmlize-output-type 'css)
 
 (vertico-reverse-mode 1)
@@ -287,7 +287,8 @@
         company-minimum-prefix-length 2)
   (setq company-dabbrev-downcase 0)
   (setq company-show-quick-access nil)
-  (add-hook 'evil-normal-state-entry-hook #'company-abort)) ;; make aborting less
+  ;;(add-hook 'evil-normal-state-entry-hook #'company-abort)
+  ) ;; make aborting less
 
 ;; company-dabbrev is rather distracting
 (set-company-backend! 'org-mode
