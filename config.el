@@ -362,3 +362,10 @@
 (setq rmh-elfeed-org-files (list "~/.doom.d/elfeed.org"))
 
 (setq org-latex-pdf-process '("latexmk -f -pdf -%latex -shell-escape -interaction=nonstopmode -output-directory=%o %f"))
+
+;; Some Leader based keybindings (inspired from doom)
+(map! :leader
+      :desc "Kill workspace" "TAB x" '+workspace/kill-session
+      :desc "Kill buffer" "b k" 'kill-this-buffer
+      :desc "Maximize buffer" "w m" 'doom/window-maximize-buffer
+      :desc "Find file in current project" "." 'find-file)
