@@ -162,7 +162,7 @@
    (buffer-face-mode))
 
 (add-hook! 'org-mode-hook 'my-buffer-face-mode-variable)
-
+(set-face-attribute 'org-table nil  :inherit 'fixed-pitch) ;; For tables alignment
 
 
 (add-hook 'python-mode-hook 'anaconda-mode)
