@@ -159,10 +159,10 @@
    "Set font to a variable width (proportional) fonts in current buffer"
    (interactive)
    (setq buffer-face-mode-face '(:family "DejaVu Serif" :height 130))
+   (set-face-attribute 'org-table nil  :inherit 'fixed-pitch) ;; For tables alignment
    (buffer-face-mode))
 
 (add-hook! 'org-mode-hook 'my-buffer-face-mode-variable)
-(set-face-attribute 'org-table nil  :inherit 'fixed-pitch) ;; For tables alignment
 
 
 (add-hook 'python-mode-hook 'anaconda-mode)
