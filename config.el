@@ -369,3 +369,5 @@
       :desc "Kill buffer" "b k" 'kill-this-buffer
       :desc "Maximize buffer" "w m" 'doom/window-maximize-buffer
       :desc "Find file in current project" "." 'find-file)
+
+(setq git-gutter:update-interval 0.1)
