@@ -98,7 +98,7 @@
 (require 'org)
 
 ;; Inkscape figures
-(load "~/.doom.d/scripts/ink.el")
+(load "~/.doom.d/scripts/ink")
 (map! :leader
       :desc "ink-create-figure" "i i" 'ink-make-figure
       :mode 'org-mode :desc "org-download-clipboard" "i c" 'org-download-clipboard)
@@ -133,9 +133,9 @@
 (global-visual-line-mode 1)
 
 
-(load "~/.doom.d/snippets/aas/basic.el")
-(load "~/.doom.d/snippets/aas/latex-aas.el")
-(load "~/.doom.d/snippets/aas/chemistry-aas.el")
+(load "~/.doom.d/snippets/aas/basic")
+(load "~/.doom.d/snippets/aas/latex-aas")
+(load "~/.doom.d/snippets/aas/chemistry-aas")
 (add-hook 'LaTeX-mode-hook 'laas-mode)
 (add-hook 'org-mode-hook 'laas-mode)
 
@@ -167,7 +167,7 @@
 
 (add-hook 'python-mode-hook 'anaconda-mode)
 
-(load "~/.doom.d/scripts/org-latex-preview-health.el")
+(load "~/.doom.d/scripts/org-latex-preview-health")
 
 ;; (setq org-latex-preview-default-process 'dvipng)
 ;; (setq org-latex-preview-default-process 'imagemagick)
@@ -251,7 +251,7 @@
         \\usepackage[dvipsnames,svgnames]{xcolor}"
 ))
 
-(load "~/.doom.d/scripts/org-latex-preview.el")
+(load "~/.doom.d/scripts/org-latex-preview")
 
 (map! :leader
       :desc "Toggle org latex preview auto mode" "t o" 'org-latex-preview-auto-mode
@@ -344,7 +344,7 @@
 (setq org-export-preserve-breaks t)
 
 ;; GPTEL
-(load-file "~/Documents/credentials/gptel-gemini-key.el")
+(load "~/Documents/credentials/gptel-gemini-key")
 (map! :leader
       :desc "GPTEL send" "g p s" 'gptel-send
       :desc "GPTEL menu" "g p m" 'gptel-menu)
