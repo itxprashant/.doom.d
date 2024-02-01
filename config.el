@@ -289,6 +289,7 @@
   (setq company-show-quick-access nil)
   ;;(add-hook 'evil-normal-state-entry-hook #'company-abort)
   ) ;; make aborting less
+(add-hook! 'company-mode-hook 'company-quickhelp-mode)
 
 ;; company-dabbrev is rather distracting
 (set-company-backend! 'org-mode

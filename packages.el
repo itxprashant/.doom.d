@@ -94,3 +94,5 @@
 (package! benchmark-init)
 (package! gptel)
 (package! rainbow-mode)
+
+(package! company-quickhelp)
