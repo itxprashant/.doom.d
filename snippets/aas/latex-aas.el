@@ -458,6 +458,7 @@ ab/ => \\frac{ab}{}
                     ("'u" . "breve")
                     ("'m" . "mbox")
                     ("'c" . "mathcal")
+                    ("'k" . "mathfrak")
                     ("'0" . ("{\\textstyle " . "}"))
                     ("'1" . ("{\\displaystyle " . "}"))
                     ("'2" . ("{\\scriptstyle " . "}"))
