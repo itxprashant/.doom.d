@@ -373,3 +373,5 @@
       :desc "Magit status" "v v" 'magit-status)
 
 (setq git-gutter:update-interval 0.1)
+
+(setq dictionary-server "dict.org")
