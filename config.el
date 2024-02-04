@@ -364,13 +364,34 @@
 
 (setq org-latex-pdf-process '("latexmk -f -pdf -%latex -shell-escape -interaction=nonstopmode -output-directory=%o %f"))
 
+(defun itxp/kill-save-line ()
+  "Kill-saves the current line"
+  (interactive)
+  (save-excursion
+    (end-of-line) (push-mark-command (point) t) (beginning-of-line)
+    (kill-ring-save (point) (mark))))
+
+(defun itxp/yank-below-line ()
+  "Yanks below line"
+  (interactive)
+  (save-excursion (end-of-line) (newline) (yank)))
+
+(defun itxp/duplicate-line ()
+  "Duplicates line"
+  (interactive)
+  (save-excursion (itxp/kill-save-line) (itxp/yank-below-line)))
+
+
 ;; Some Leader based keybindings (inspired from doom)
 (map! :leader
       :desc "Kill workspace" "TAB x" '+workspace/kill-session
       :desc "Kill buffer" "b k" 'kill-this-buffer
       :desc "Maximize buffer" "w m" 'doom/window-maximize-buffer
       :desc "Find file in current project" "." 'find-file
-      :desc "Magit status" "v v" 'magit-status)
+
+      :desc "kill-save line" "y w" 'itxp/kill-save-line
+      :desc "yank below line" "y y" 'itxp/yank-below-line
+      :desc "duplicate line" "y d" 'itxp/duplicate-line)
 
 (setq git-gutter:update-interval 0.1)
 
