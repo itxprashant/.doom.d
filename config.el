@@ -396,3 +396,5 @@
 (setq git-gutter:update-interval 0.1)
 
 (setq dictionary-server "dict.org")
+
+(setq initial-scratch-message nil)
