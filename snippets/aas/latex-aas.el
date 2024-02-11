@@ -260,9 +260,10 @@ it is restored only once."
     "rd"    (lambda () (interactive) (yas-expand-snippet "_{$1}$0"))
     "rlr"    (lambda () (interactive) (yas-expand-snippet "\\left( $1 \\right)$0"))
     "slr"    (lambda () (interactive) (yas-expand-snippet "\\left[ $1 \\right]$0"))
+    "lra"    (lambda () (interactive) (yas-expand-snippet "\\left< $1 \\right>$0"))
     "|->"   "\\mapsto "
     "|="    "\\models "
-    "||"    "\\mid "
+    "||"    "\\biggr|"
     "~="    "\\sim "
     "~~"    "\\approx "
     "prop"  "\\propto "
