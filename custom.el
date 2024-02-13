@@ -4,10 +4,10 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(magit-todos-insert-after '(bottom) nil nil "Changed by setter of obsolete option `magit-todos-insert-at'")
- '(org-safe-remote-resources
-   '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-bigblow\\.setup\\'" "\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-readtheorg\\.setup\\'"))
- '(package-selected-packages '(yasnippet))
- '(warning-suppress-log-types '(((org-element org-element-parser buffer-local-value)))))
+ '(warning-suppress-log-types
+   '(((org latex-preview put-cache))
+     ((org-element org-element-parser))
+     ((org latex-preview put-cache)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -15,5 +15,5 @@
  ;; If there is more than one, they won't work right.
  '(font-lock-comment-face ((t (:slant italic))))
  '(font-lock-keyword-face ((t (:slant italic))))
- '(widget-button ((t (:foreground nil)))))
-(put 'magit-edit-line-commit 'disabled nil)
+ '(ts-fold-replacement-face ((t (:foreground unspecified :box nil :inherit font-lock-comment-face :weight light)))))
+(put 'downcase-region 'disabled nil)
