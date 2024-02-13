@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
-# name: partial derivative
+# name: partial-derivative
 # key: par
 # condition: (texmathp)
 # group: math
 # --
-\\frac{\\partial $1}{\\partial ${2:x}} $0
+\\frac{\partial${1:$(when (> (length yas-text) 0) "^")}$1 $2}{\partial ${3:x}${1:$(when (> (length yas-text) 0) "^")}$1} $0

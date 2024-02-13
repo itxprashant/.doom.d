@@ -4,4 +4,4 @@
 # condition: (texmathp)
 # group: math
 # --
-\\frac{\\mathrm{d} $1}{\\mathrm{d} ${2:x}} $0
+\\frac{\\mathrm{d}${1:$(when (> (length yas-text) 0) "^")}$1 $2}{\\mathrm{d} ${3:x}${1:$(when (> (length yas-text) 0) "^")}$1} $0

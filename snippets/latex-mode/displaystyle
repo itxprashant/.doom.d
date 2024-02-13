@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: displaystyle
+# key: dsp
+# condition: (texmathp)
+# --
+\displaystyle $0

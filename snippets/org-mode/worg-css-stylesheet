@@ -2,4 +2,4 @@
 # name: worg-css-stylesheet
 # key: worg
 # --
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://itxprashant.github.io/org-html-themes/src/worg/worg.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://org-html-themes-itxp.pages.dev/src/worg/worg.css"/>

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: src-config
+# key: srcconf
+# --
+#+begin_src emacs-lisp :tangle config.el
+$1
+#+end_src
+$0
