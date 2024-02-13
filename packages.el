@@ -96,3 +96,5 @@
 (package! rainbow-mode)
 
 (package! company-quickhelp)
+
+(unpin! doom-snippets)
