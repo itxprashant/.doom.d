@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: latex-table
+# key: table1
+# --
+\\begin{center}
+\\begin{tabular}{$1}
+\\hline
+$2 \\\\
+\\hline
+$3
+\\hline
+\\end{tabular}
+\\end{center}
+$0

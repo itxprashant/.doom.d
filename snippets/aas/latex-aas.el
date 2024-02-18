@@ -370,12 +370,20 @@ it is restored only once."
     ";<"  "\\leftarrow"    ";;<" "\\longleftarrow"  ";;;<" "\\min"
     ";>"  "\\rightarrow"   ";;>" "\\longrightarrow" ";;;>" "\\max"
     ";'"  "\\prime"
-    ";."  "\\cdot")
+    ";."  "\\cdot"
+
+    ;; Integrals
+    "oiint" "\\oiint"
+    "oint" "\\oint"
+    "iiint" "\\iiint"
+    "iint" "\\iint"
+        )
   "Basic snippets. Expand only inside maths.")
 
 (defvar laas-subscript-snippets
   `(:cond laas-auto-script-condition
-    ,@(cl-loop for (key exp) in '(("ii"  laas-insert-script)
+    ,@(cl-loop for (key exp) in '(
+                                  ;;("ii"  laas-insert-script)
                                   ("ip1" "_{i+1}")
                                   ("im1" "_{i-1}")
                                   ("jj"  laas-insert-script)
@@ -420,7 +428,6 @@ ab/ => \\frac{ab}{}
   (or (derived-mode-p 'latex-mode)
       (laas-mathp)))
 
-(defun laas-accent--rm   () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathrm" "textrm")))
 (defun laas-accent--it   () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathit" "textit")))
 (defun laas-accent--bf   () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathbf" "textbf")))
 (defun laas-accent--emph () (interactive)   (laas-wrap-previous-object (if (laas-mathp) "mathem" "emph")))
@@ -429,7 +436,6 @@ ab/ => \\frac{ab}{}
 (defvar laas-accent-snippets
   `(;; work in both normal latex text and math
     :cond laas-latex-accent-cond
-    :expansion-desc "Wrap in \\mathrm{} or \\textrm{}"     "'r" laas-accent--rm
     :expansion-desc "Wrap in \\mathit{} or \\textit{}"     "'i" laas-accent--it
     :expansion-desc "Wrap in \\mathbf{} or \\textbf{}"     "'b" laas-accent--bf
     :expansion-desc "Wrap in \\mathemph{} or \\textemph{}" "'e" laas-accent--emph
@@ -461,12 +467,12 @@ ab/ => \\frac{ab}{}
                     ("'m" . "mbox")
                     ("'c" . "mathcal")
                     ("'k" . "mathfrak")
+                    ("'r" . "mathrm")
                     ("'0" . ("{\\textstyle " . "}"))
                     ("'1" . ("{\\displaystyle " . "}"))
                     ("'2" . ("{\\scriptstyle " . "}"))
                     ("'3" . ("{\\scriptscriptstyle " . "}"))
-                    ;; now going outside cdlatex
-                    ("'q" . "sqrt")
+
                     ;; "influenced" by Gilles Castel
                     (".. " . ("\\dot{" . "} "))
                     (",." . "vec")
