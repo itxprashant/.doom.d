@@ -480,9 +480,11 @@ Latex-snippets
 (setq gptel-default-mode #'org-mode)
 (load "~/Documents/credentials/gptel-gemini-key")
 (map! :leader
-      :desc "GPTEL" "g p p" 'gptel
-      :desc "GPTEL send" "g p s" 'gptel-send
-      :desc "GPTEL menu" "g p m" 'gptel-menu)
+      :desc "GPTEL" "g g" 'gptel
+      :desc "GPTEL send" "g s" 'gptel-send
+      :desc "GPTEL menu" "g m" 'gptel-menu)
+
+(define-key gptel-mode-map (kbd "C-c C-c") 'gptel-send)
 #+end_src
 
 
